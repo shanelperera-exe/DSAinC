@@ -7,6 +7,8 @@ void push(int st[], int val);
 int pop(int st[]);
 int peek(int st[]);
 void display(int st[]);
+int isEmpty();
+int isFull();
 
 int main(int argc, char *argv[]) {
     int val, option;
@@ -19,24 +21,23 @@ int main(int argc, char *argv[]) {
         printf("\n5. EXIT");
         printf("\nEnter your option: ");
         scanf("%d", &option);
-        printf("\n");
         
         switch(option) {
             case 1:
-                printf("\n Enter the number to be pushed on stack: ");
+                printf("\nEnter the number to be pushed on stack: ");
                 scanf("%d", &val);
                 push(st, val);
                 break;
             case 2:
                 val = pop(st);
                 if(val != -1) {
-                    printf("\n The value deleted from stack is: %d", val);
+                    printf("\nThe value deleted from stack is: %d", val);
                     break;
                 }
             case 3:
                 val = peek(st);
                 if(val != -1) {
-                    printf("\n The value stored at top of stack is: %d", val);
+                    printf("\nThe value stored at top of stack is: %d", val);
                     break;
                 }
             case 4:
@@ -48,7 +49,7 @@ int main(int argc, char *argv[]) {
 }
 
 void push(int st[], int val) {
-    if (top == MAX - 1) {
+    if (isFull()) {
         printf("STACK OVERFLOW\n");
     }
     else {
@@ -59,7 +60,7 @@ void push(int st[], int val) {
 
 int pop(int st[]) {
     int val;
-    if (top == -1) {
+    if (isEmpty()) {
         printf("STACK UNDERFLOW\n");
         return -1;
     }
@@ -71,7 +72,7 @@ int pop(int st[]) {
 }
 
 int peek(int st[]) {
-    if (top == -1) {
+    if (isEmpty()) {
         printf("STACK IS EMPTY\n");
         return -1;
     }
@@ -81,12 +82,20 @@ int peek(int st[]) {
 }
 
 void display(int st[]) {
-    if (top == -1) {
+    if (isEmpty()) {
         printf("STACK IS EMPTY\n");
     } else {
-        printf("Stack elements are:\n");
+        printf("\nStack elements are:\n");
         for (int i = top; i >= 0; i--) {
             printf("%d\n", st[i]);
         }
     }
+}
+
+int isEmpty() {
+    return top == -1;
+}
+
+int isFull() {
+    return top == MAX - 1;
 }
