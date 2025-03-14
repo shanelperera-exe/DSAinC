@@ -66,7 +66,6 @@ char pop(char stack[]) {
 	char c;
 	if (isEmpty(stack)) {
 		printf("STACK UNDERFLOW\n");
-		return -1;
 	}
 	else {
 		c = stack[top];
@@ -78,7 +77,6 @@ char pop(char stack[]) {
 char peek(char stack[]) {
 	if (isEmpty(stack)) {
 		printf("STACK IS EMPTY\n");
-		return -1;
 	}
 	else {
 		return stack[top];

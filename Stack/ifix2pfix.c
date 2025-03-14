@@ -1,4 +1,4 @@
-// Reverse a string using a stack
+// Convert an infix expression into postfix expression
 
 #include <stdio.h>
 #include <string.h>
@@ -9,37 +9,31 @@ void push(char st[], char c);
 char pop(char st[]);
 int is_full(char st[]);
 int is_empty(char st[]);
-void reverse(char st[]);
+void infix_to_postfix(char stack[], char exp[]);
 
 char stack[MAX_SIZE];
 int top = -1;
 
 int main(void) {
-    char str[MAX_SIZE];
-    printf("Enter a string: ");
-    fgets(str, MAX_SIZE, stdin);
-    str[strcspn(str, "\n")] = '\0';
-    reverse(str);
+    char infix_exp[MAX_SIZE];
+    printf("Enter an expression: ");
+    fgets(infix_exp, MAX_SIZE, stdin);
+    infix_exp[strcspn(infix_exp, "\n")] = '\0';
+    infix_to_postfix(stack, infix_exp);
     return 0;
 }
 
-void reverse(char st[]) {
-    int i = 0;
-    char a[MAX_SIZE];
+void infix_to_postfix(char stack[], char exp[]) {
+    char postfix[MAX_SIZE];
+    
+    strcat(exp, ")");
+    push(stack, '(');
 
-    while (st[i] != '\0') {
-        push(stack, st[i]);
-        i++;
+    for(int i = 0; i < strlen(exp); i++) {
+        if (exp[i] == '(') {
+            push(stack, '(');
+        }
     }
-
-    i = 0;
-    while (!is_empty(stack)) {
-        a[i] = pop(stack);
-        i++;
-    }
-
-    a[i] = '\0';
-    printf("Reversed string: %s\n", a);
 }
 
 void push(char stack[], char c) {

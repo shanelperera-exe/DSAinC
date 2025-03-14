@@ -1,4 +1,4 @@
-// Reverse a string using a stack
+// Checks whether an expression has a balanced parenthesis using a stack.
 
 #include <stdio.h>
 #include <string.h>
@@ -9,37 +9,39 @@ void push(char st[], char c);
 char pop(char st[]);
 int is_full(char st[]);
 int is_empty(char st[]);
-void reverse(char st[]);
+int check_expression(char exp[]);
 
 char stack[MAX_SIZE];
 int top = -1;
 
 int main(void) {
-    char str[MAX_SIZE];
-    printf("Enter a string: ");
-    fgets(str, MAX_SIZE, stdin);
-    str[strcspn(str, "\n")] = '\0';
-    reverse(str);
+    char exp[MAX_SIZE];
+    printf("Enter an expression: ");
+    fgets(exp, MAX_SIZE, stdin);
+    exp[strcspn(exp, "\n")] = '\0';
+    
+    if (check_expression(exp)) {
+        printf("Balanced\n");
+    }
+    else {
+        printf("Not Balanced\n");
+    }
     return 0;
 }
 
-void reverse(char st[]) {
-    int i = 0;
-    char a[MAX_SIZE];
-
-    while (st[i] != '\0') {
-        push(stack, st[i]);
-        i++;
+int check_expression(char exp[]) {
+    for(int i = 0; i < strlen(exp); i++) {
+        if (exp[i] == '(') {
+            push(stack, exp[i]);
+        }
+        else if (exp[i] == ')') {
+            if (is_empty(stack)) {
+                return 0;
+            }
+            pop(stack);
+        }
     }
-
-    i = 0;
-    while (!is_empty(stack)) {
-        a[i] = pop(stack);
-        i++;
-    }
-
-    a[i] = '\0';
-    printf("Reversed string: %s\n", a);
+    return is_empty(stack);
 }
 
 void push(char stack[], char c) {
