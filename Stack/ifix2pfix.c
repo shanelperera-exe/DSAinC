@@ -1,3 +1,5 @@
+// Convert Infix expressions (A-B) * (C+D) to Postfix Expressions AB-CD+*
+
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
@@ -18,7 +20,7 @@ int top = -1;
 int main(void) {
     char infix_exp[MAX_SIZE];
 
-    printf("Enter an expression: ");
+    printf("Infix expression: ");
     fgets(infix_exp, MAX_SIZE, stdin);
     infix_exp[strcspn(infix_exp, "\n")] = '\0';
 
