@@ -12,8 +12,8 @@ typedef struct queue {
 } queue;
 
 void create_queue(queue *q);
-void insert(queue *q, int num);
-void delete(queue *q);
+void *insert(queue *q, int num);
+void *delete(queue *q);
 int peek(queue *q);
 void display_queue(queue *q);
 
@@ -61,7 +61,7 @@ void create_queue(queue *q) {
     q->front = NULL;
 }
 
-void insert(queue *q, int num) {
+void *insert(queue *q, int num) {
     node *ptr;
     ptr = (node*) malloc(sizeof(node));
     ptr->data = num;
@@ -77,7 +77,7 @@ void insert(queue *q, int num) {
     }
 }
 
-void delete(queue *q) {
+void *delete(queue *q) {
     node *ptr;
     ptr = q->front;
 

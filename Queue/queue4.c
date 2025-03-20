@@ -12,7 +12,7 @@ typedef struct queue {
 } queue;
 
 void create_queue(queue *q);
-void insert(queue *q, int num);
+void *insert(queue *q, int num);
 void add_numbers(queue *q);
 void find_number(queue *q);
 void display_numbers(queue *q);
@@ -56,7 +56,7 @@ void create_queue(queue *q) {
     q->rear = NULL;
 }
 
-void insert(queue *q, int num) {
+void *insert(queue *q, int num) {
     node *ptr;
     ptr = (node*) malloc(sizeof(node));
     ptr->data = num;
