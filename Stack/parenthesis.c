@@ -17,6 +17,7 @@ int top = -1;
 int main(void) {
     char exp[MAX_SIZE];
     printf("Enter an expression: ");
+    
     fgets(exp, MAX_SIZE, stdin);
     exp[strcspn(exp, "\n")] = '\0';
     

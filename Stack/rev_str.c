@@ -16,9 +16,11 @@ int top = -1;
 
 int main(void) {
     char str[MAX_SIZE];
+
     printf("Enter a string: ");
     fgets(str, MAX_SIZE, stdin);
     str[strcspn(str, "\n")] = '\0';
+
     reverse(str);
     return 0;
 }
