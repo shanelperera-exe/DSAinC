@@ -28,24 +28,24 @@ int main(void) {
 		scanf("%d", &option);
 		
 		switch(option) {
-		case 1:
-			printf("Enter the character to be pushed on stack: ");
-			scanf(" %c", &c);
-			push(stack, c);
-			break;
-		case 2:
-			c = pop(stack);
-			if (c != -1) {
-				printf("Character removed from the stack: %c\n", c);
-			}
-			break;
-		case 3:
-			c = peek(stack);
-			printf("Character stored at top of the stack: %c\n", c);
-			break;
-		case 4:
-			display(stack);
-			break;
+			case 1:
+				printf("Enter the character to be pushed on stack: ");
+				scanf(" %c", &c);
+				push(stack, c);
+				break;
+			case 2:
+				c = pop(stack);
+				if (c != -1) {
+					printf("Character removed from the stack: %c\n", c);
+				}
+				break;
+			case 3:
+				c = peek(stack);
+				printf("Character stored at top of the stack: %c\n", c);
+				break;
+			case 4:
+				display(stack);
+				break;
 	}
 	
 	} while(option != 5);

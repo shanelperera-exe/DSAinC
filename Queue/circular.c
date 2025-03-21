@@ -2,13 +2,10 @@
 
 #define MAX 10
 
-void insert(void);
-int delete(void);
-int peek(void);
-void display(void);
-
 int queue[MAX];
 int front = -1, rear = -1;
+
+void insert(int c)
 
 int main(void) {
     int option, val;
@@ -46,58 +43,23 @@ int main(void) {
     return 0;
 }
 
-void insert(void) {
+void insert(int c) {
     int num;
-    printf("Enter the number to be inserted into the queue: ");
-    scanf("%d", &num);
-
-    if (rear == MAX - 1) {
+    
+    if (front == 0 && rear == MAX - 1) {
         printf("OVERFLOW\n");
     }
     else if (front == -1 && rear == -1) {
         front = rear = 0;
+        queue[rear] = num;
+    }
+    else if (rear = MAX -1 && front != 0) {
+        rear = 0;
+        queue[rear] = num;
     }
     else {
         rear++;
-    }
-    queue[rear] = num;
-}
-
-int delete(void) {
-    int num;
-    if (front == -1 || front > rear) {
-        printf("UNDERFLOW\n");
-        return -1;
-    }
-    else {
-        num = queue[front];
-        front++;
-        if (front > rear) {
-            front = rear = -1;
-        }
-        return num;
+        queue[rear] = num;
     }
 }
 
-int peek(void) {
-    if (front == -1 || front > rear) {
-        printf("QUEUE IS EMPTY\n");
-        return -1;
-    }
-    else {
-        return queue[front];
-    }
-}
-
-void display(void) {
-    if (front == -1 || front > rear) {
-        printf("QUEUE IS EMPTY\n");
-    }
-    else {
-        printf("Queue: ");
-        for (int i = front; i <= rear; i++) {
-            printf("%d ", queue[i]);
-        }
-        printf("\n");
-    }
-}

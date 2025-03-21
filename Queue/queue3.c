@@ -92,7 +92,13 @@ void *delete(queue *q) {
 }
 
 int peek(queue *q) {
-    return q->front->data;
+    if (q->front == NULL) {
+        printf("QUEUE IS EMPTY\n");
+        return -1;
+    } 
+    else {
+        return q->front->data;
+    }
 }
 
 void display_queue(queue *q) {
