@@ -104,6 +104,5 @@ void display(struct node *top) {
             ptr = ptr->next;
         }
         printf("-------\n");
-        //printf("NULL\n");
     }
 }
