@@ -8,7 +8,6 @@ typedef struct Node {
 } Node;
 // Shortening the Node Declaration
 
-
 Node *create_node(int data) {
     Node *new_node = (Node*)malloc(sizeof(Node));
     new_node->data = data;
@@ -18,7 +17,6 @@ Node *create_node(int data) {
 
     return new_node;
 }
-
 
 int main(void) {
     // Create and initialize nodes
