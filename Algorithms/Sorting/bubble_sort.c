@@ -23,7 +23,7 @@ int main(void) {
 void bubbleSort(int array[], int size) {
     int temp;
     for (int pass = 0; pass < (size - 1) - 1; pass++) {
-        for (int i = 0; i < (size - 1- pass); i++) {
+        for (int i = 0; i < (size - 1 - pass); i++) {
             if (array[i] > array[i + 1]) {
                 temp = array[i];
                 array[i] = array[i + 1];
